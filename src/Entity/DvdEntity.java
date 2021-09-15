@@ -18,16 +18,12 @@ public class DvdEntity {
     public DvdEntity() { }
 
     // 생성자 생성
-    public DvdEntity(int dvdNumber, int dvdLaunchYear, String dvdName, String production, String genre, int rentalCount, float dvdRating, boolean rental, String rentalName) {
+    public DvdEntity(int dvdNumber, int dvdLaunchYear, String dvdName, String production, String genre) {
         this.dvdNumber = dvdNumber;
         this.dvdLaunchYear = dvdLaunchYear;
         this.dvdName = dvdName;
         this.production = production;
         this.genre = genre;
-        this.rentalCount = rentalCount;
-        this.dvdRating = dvdRating;
-        this.rental = rental;
-        this.rentalName = rentalName;
     }
 
     public int getDvdNumber() { return dvdNumber; }
