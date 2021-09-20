@@ -17,7 +17,8 @@ public class Main {
         int selnum;
 
         while (true) {
-            System.out.println("\n***메뉴입니다****");
+            System.out.println();
+            System.out.println("***메뉴입니다****");
             System.out.println("1. Inser - 등록");
             System.out.println("2. Show - 조회");
             System.out.println("3. Modify - 수정");
@@ -27,6 +28,7 @@ public class Main {
             System.out.printf("원하시는 메뉴를 입력해주세요 > ");
 
             selnum = Integer.parseInt(sc.nextLine());
+
 
             switch (selnum) {
                 case 1: ctrl.insert();

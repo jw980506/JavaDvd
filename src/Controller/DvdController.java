@@ -14,6 +14,7 @@ public class DvdController {
 
     //등록
     public void insert() {
+
         System.out.println("\nDVD 등록을 시작합니다");
         System.out.printf("DVD 번호 : ");
         int num = Integer.parseInt(sc.nextLine());
@@ -28,7 +29,7 @@ public class DvdController {
         System.out.println("ISBN은 자동으로 생성됩니다");
         UUID isbn = UUID.randomUUID();
 
-        System.out.printf("DVD를 등록하시겠습니까? (1.등록, 2.다시입력)");
+        System.out.printf("DVD를 등록하시겠습니까? (1.등록, 2.다시입력) : ");
         int selnum = Integer.parseInt(sc.nextLine());
         if (selnum == 1) {
             //입력받은 내용들을 배열에 저장
@@ -37,12 +38,13 @@ public class DvdController {
 
             for (int i = 0; i < dvd.length; i++) {
                 System.out.println("\n***DVD 등록 완료***");
-                System.out.println("DVD 번호 : " + dvd[i].getDvdNumber());
-                System.out.println("출시년 : " + dvd[i].getDvdLanunchYear());
-                System.out.println("DVD명 : " + dvd[i].getDvdName());
-                System.out.println("제작사 : " + dvd[i].getGenre());
-                System.out.println("장르 : " + dvd[i].getGenre());
-                System.out.println("ISBN : \n" + dvd[i].getIsbn());
+                System.out.println("DVD 번호 : " + dvd[cnt-1].getDvdNumber());
+                System.out.println("출시년 : " + dvd[cnt-1].getDvdLanunchYear());
+                System.out.println("DVD명 : " + dvd[cnt-1].getDvdName());
+                System.out.println("제작사 : " + dvd[cnt-1].getProduction());
+                System.out.println("장르 : " + dvd[cnt-1].getGenre());
+                System.out.println("ISBN : " + dvd[cnt-1].getIsbn());
+                System.out.println("");
                 break;
             }
         }
@@ -58,8 +60,8 @@ public class DvdController {
     //조회
     public void show() {
         if (cnt == 0) {
-            System.out.printf("\n등록되어 있는 DVD가 없습니다");
-            System.out.printf("초기화면으로 돌아갑니다");
+            System.out.println("\n등록되어 있는 DVD가 없습니다");
+            System.out.println("초기화면으로 돌아갑니다");
         }
         else {
             System.out.println("\n등록되어 있는 DVD목록입니다");
@@ -72,7 +74,7 @@ public class DvdController {
                     System.out.println(i + 1 + "번째 제작사 : " + dvd[i].getProduction());
                     System.out.println(i + 1 + "번째 장르 :  " + dvd[i].getGenre());
                     System.out.println(i + 1 + "번째 ISBN : " + dvd[i].getIsbn());
-                    System.out.println("\n");
+                    System.out.println("");
                 }
             }
         }
@@ -80,8 +82,8 @@ public class DvdController {
 
     public void modify() {
         System.out.println("수정 메뉴 입니다");
-        System.out.printf("수정을 원하시는 인덱스를 입력해주세요 : ");
-        System.out.println("수정을 원하시지 않으면 0번을 눌러주세요");
+        System.out.printf("수정을 원하시는 인덱스를 입력해주세요(수정을 원하지 않으면 0번을 눌러주세요) :  ");
+
         //수정을 위한 인덱스 대신 받을 변수
         int num = Integer.parseInt(sc.nextLine());
 
@@ -115,11 +117,17 @@ public class DvdController {
     }//End 수정
 
     public void delete() {
+        System.out.println();
         System.out.println("삭제 메뉴 입니다");
         System.out.printf("삭제를 원하는 인덱스를 입력해주세요 : ");
 
         int num = Integer.parseInt(sc.nextLine());
 
+        for (int i = num-1; i < dvd.length-1; i++) {
+            dvd[i] = dvd[i+1];
+        }
 
+        System.out.println("삭제가 완료되었습니다");
+        cnt--;
     }//End 삭제
 }//End
